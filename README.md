@@ -1,0 +1,1 @@
+# fastify-with-typescript-and-zod
