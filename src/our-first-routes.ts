@@ -1,9 +1,20 @@
-import type { FastifyInstance, FastifyPluginOptions } from "fastify";
+import { z } from "zod/v4";
+import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 
-async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
-  fastify.get("/", async (request, reply) => {
-    return { hello: "world" };
-  });
-}
+const routes: FastifyPluginAsyncZod = async (fastify) => {
+  fastify.get(
+    "/",
+    {
+      schema: {
+        response: {
+          200: z
+            .object({ hello: z.string() })
+            .describe("Health check / hello world"),
+        },
+      },
+    },
+    async () => ({ hello: "world" }),
+  );
+};
 
 export default routes;
