@@ -1,0 +1,27 @@
+{
+  "name": "fastify-with-typescript-and-zod",
+  "version": "1.0.0",
+  "description": "Fastify with typescript and zod",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "node --watch src/server.ts",
+    "start": "node src/server.ts"
+  },
+  "keywords": [],
+  "author": "Igor Teixeira",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.18.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.18.0",
+  "type": "module",
+  "dependencies": {
+    "fastify": "^5.12.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6"
+  }
+}
