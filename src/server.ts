@@ -8,7 +8,8 @@ import {
 } from "fastify-type-provider-zod";
 import Fastify from "fastify";
 import routes from "./our-first-routes.ts";
-import httpErrorHandler from "./http-error-handler.ts";
+import httpErrorHandler from "./config/http-error-handler.ts";
+import { env } from "./config/env.ts";
 
 const fastify = Fastify({ logger: true });
 
@@ -36,7 +37,7 @@ const start = async () => {
   try {
     await fastify.register(httpErrorHandler);
     await fastify.register(routes);
-    await fastify.listen({ port: 3333, host: "127.0.0.1" });
+    await fastify.listen({ host: env.HOST, port: env.PORT });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
